@@ -1,0 +1,99 @@
+:root {
+    --modifier: 0px;
+    --init: 0px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    height: 100vh;
+}
+
+.tg-wrapper {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.tg-wrapper > * {
+    user-select: none;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(calc(-50% + var(--modifier) - var(--init))) translateY(-50%);
+}
+
+.tg-wrapper .story {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    place-items: center;
+    font-weight: bold;
+    font-size: 2rem;
+    display: flex;
+    border: 10px solid white;
+    position: relative;
+    animation: bounce .5s;
+    transform-origin: center;
+}
+
+.tg-wrapper > .behinds > .story > .behind {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    background-color: gray;
+    z-index: -1;
+    border-radius: 50%;
+}
+
+.tg-wrapper > .stories {
+    z-index: 10;
+}
+
+[data-add] {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border-style: none;
+    background-color: black;
+    color: white;
+    font-size: 2rem;
+    animation: jump .7s ease-in-out;
+    cursor: pointer;
+    transition: all;
+    transition-duration: 200ms;
+    user-select: none;
+}
+
+@keyframes jump {
+    from {
+        transform: translate(-50%, 150%);
+    }
+    to {
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes bounce {
+    from {
+        transform: scale(.8) translateX(calc(-50% + var(--modifier))) translateY(-50%);
+    }
+}
+
+
+[data-add][data-press="true"] {
+    width: 60px;
+    height: 60px;
+}
